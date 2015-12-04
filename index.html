@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Consulta Entidades</title>
+ <script data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.1.5/angular.js"></script>
+ <script>
+function Main($scope) {
+    $scope.items = [{
+        name: 'Name 1'},
+    {
+        name: 'Name 2'},
+    {
+        name: 'Name 3'}];
+}
+</script>
+
+</head>
+<body>
+<div class="container" style="margin-top:40px;">
+<div class="row">
+<div class="col-md-12">
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4><span class="glyphicon glyphicon-search"></span>&nbsp;CONSULTA ENDEREÇO UNIDADE MINISTERIAL</h4>
+</div>
+<div class="panel-body">
+<div class="col-md-3">
+	<a href="http://www.mppi.mp.br" target="_blank"><img width="223px" alt="logo mppi" title="Logo MPPI" height="200px" src="images/logo.jpg"></a>
+</div>
+
+
+<!-- filter options -->
+<div class="col-md-9">
+	<form>
+		<div class="form-group">
+			<label>Entrância</label>
+			<input disabled="disabled" type="text" class="form-control">
+		</div>
+
+		<div class="form-group" ng-controller="ExampleController">
+			<label>Cidade</label>
+			<select class="form-control" >
+				<option>xxxxx</option>
+			</select>        		
+		</div>
+		<div class="form-group">
+			<label>Unidade Ministerial</label>
+			<select class="form-control">
+				<option>xxxxx</option>
+				<option>xxxxx</option>						
+			</select> 
+		</div>
+	</form>	         	
+</div>
+
+<!-- details about unit -->
+
+<div ng-controller="Main" ng-app>  
+      <select ng-model="selection" ng-options="x.name for x in items">
+        <option value=""></option>
+      </select>
+</div>
+
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">INFORMAÇÕES</div>	
+		<div class="panel-body">	   	
+			<div class="form-group">
+				<table class="table" border="0" cellpadding="2" cellspacing="2" width="100%">
+					<tbody>
+						<tr>
+							<td width="273" style="border-top:none;"><b>2ª Unidade Regional</b></td>
+							<td width="179" style="border-top:none;"><b>60ª Zona</b></td>
+						</tr>
+						<tr>
+							<td width="273"><b>Membro:</b> Herbet Gonçalves Santos</td>
+							<td width="179"><b>Tipo:</b> Promotoria</td>
+						</tr>
+						<tr>
+							<td><b>Endereço:</b> Rua Cícero Mandu, s/n</td>
+							<td><b>Bairro:</b> Centro</td>
+						</tr>
+						<tr>
+							<td><b>Cidade:</b> Acopiara</td>
+							<td><b>Estado:</b> CE</td>
+						</tr>
+						<tr>
+							<td><b>Cep:</b> 63.560-000</td>
+							<td><nobr><b>Telefone:</b> (88) 3565-0108</nobr></td>
+						</tr>
+						<tr>
+							<td><b>E-mail:</b> paulo.araujo@hotmail.com.br</td>
+							<td><b>Fax:</b> (88) 565-0755</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div></div></div>	
+	</div>
+
+	<!-- map -->
+	<div class="row">
+		<div class="col-md-12">
+			<iframe style="height:50%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Governador Archer - MA, Brasil&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;}</style></div>		   
+		</div>
+	</div>  			
+</div>
+</div>
+
+<!-- external resources -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+
+</body>
+</html>

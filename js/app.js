@@ -1,10 +1,11 @@
 var app = angular.module('myApp', []);
 
-// meu controller
-app.controller('cidadeCtrl', function($scope, $http) {
+app.controller('myCtrl', function($scope, $http) {
 
 	$scope.cidade =  [];
 	$scope.unidade = [];	
+	$scope.temp = [];
+	$scope.tempKey;
 
   	$http.get("all.json")
     	.then(function (response) {
@@ -12,26 +13,31 @@ app.controller('cidadeCtrl', function($scope, $http) {
     });
 
    	$scope.getUnidade = function(){
-   		// remove lista quando selecionar novo cidade
-   		$scope.unidade = [];
 
+   		$scope.unidade = [];
+   		$scope.temp = [];   		
    		var key = this.data.id;
 
 	    $http.get("unidade.json")
 	    	.then(function (response){
 	    		for (var i = 0; i < response.data.length; i++) {
 	    			if(response.data[i].cidade_id == key){
-							$scope.unidade.push(response.data[i]);
+						$scope.unidade.push(response.data[i]);
 	    			}
 	    		}
-	    		
-	    		console.log($scope.unidade);
 	    });
-
    	};
 
    	$scope.getDetails = function(){
-   		console.log(this.data);
+
+   		$scope.temp = [];
+
+   		for (var i = 0; i < $scope.unidade.length; i++){
+	    	if($scope.unidade[i].id == $scope.tempKey){
+	    		$scope.temp.push($scope.unidade[i]);
+	    	}
+	   	}
+
    	};
 
 });

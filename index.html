@@ -2,11 +2,11 @@
 <head>
 <meta charset="utf-8">
 <title>Consulta Entidades</title>
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+ <script src="js/angular.min.js"></script>
  <script src="js/app.js"></script>
 
 </head>
-<body>
+<body ng-controller="myCtrl as ctrl">
 <div class="container" style="margin-top:40px;">
 <div class="row">
 <div class="col-md-12">
@@ -20,9 +20,9 @@
 	<a href="http://www.mppi.mp.br" target="_blank"><img width="223px" alt="logo mppi" title="Logo MPPI" height="200px" src="images/logo.jpg"></a>
 </div>
 
-<!-- filter options -->
+<!-- filters -->
 <div class="col-md-9">
-	<form ng-controller="cidadeCtrl">
+	<form>
 		<div class="form-group">
 			<label>Entrância</label>
 			<input disabled="disabled" type="text" class="form-control">
@@ -30,14 +30,15 @@
 
 		<div class="form-group">
 			<label>Cidade</label>
-			<select class="form-control" ng-model="data.id" data-ng-change="getUnidade()">
-			      <option ng-repeat="option in cidade" value="{{option.id}}">{{option.nome}}</option>
+			<select class="form-control" data-ng-model="data.id" data-ng-change="getUnidade()">
+			      <option ng-repeat="x in cidade" value="{{x.id}}">{{x.nome}}</option>
 			</select>       		
 		</div>
+
 		<div class="form-group">
 			<label>Unidade Ministerial</label>
-			<select class="form-control" ng-model="" data-ng-change="getDetails()"> 
-				<option ng-repeat="option in unidade">{{option.nome}}</option>				
+			<select class="form-control" data-ng-model="tempKey" data-ng-change="getDetails()"> 
+				<option ng-repeat="y in unidade" value="{{y.id}}">{{y.nome}}</option>				
 			</select> 
 		</div>
 	</form>	         	
@@ -45,36 +46,36 @@
 
 <!-- details about unit -->
 
-<div class="col-md-12">
+<div class="col-md-12" ng-show="temp.length">
 	<div class="panel panel-default">
-		<div class="panel-heading">INFORMAÇÕES</div>	
+		<div class="panel-heading"><b>INFORMAÇÕES</b></div>	
 		<div class="panel-body">	   	
 			<div class="form-group">
 				<table class="table" border="0" cellpadding="2" cellspacing="2" width="100%">
 					<tbody>
 						<tr>
-							<td width="273" style="border-top:none;"><b>2ª Unidade Regional</b></td>
-							<td width="179" style="border-top:none;"><b>60ª Zona</b></td>
+							<td width="273" style="border-top:none;"><b>{{temp[0].nome}}</b></td>
+							<td width="179" style="border-top:none;"><b>XXXXXXXXX</b></td>
 						</tr>
 						<tr>
-							<td width="273"><b>Membro:</b> Herbet Gonçalves Santos</td>
-							<td width="179"><b>Tipo:</b> Promotoria</td>
+							<td width="273"><b>Membro:</b> {{temp[0].membro}}</td>
+							<td width="179"><b>Tipo:</b> ##########</td>
 						</tr>
 						<tr>
-							<td><b>Endereço:</b> Rua Cícero Mandu, s/n</td>
-							<td><b>Bairro:</b> Centro</td>
+							<td><b>Endereço:</b> ##########</td>
+							<td><b>Bairro:</b> ############</td>
 						</tr>
 						<tr>
-							<td><b>Cidade:</b> Acopiara</td>
-							<td><b>Estado:</b> CE</td>
+							<td><b>Cidade:</b> ###########</td>
+							<td><b>Estado:</b> ##########</td>
 						</tr>
 						<tr>
-							<td><b>Cep:</b> 63.560-000</td>
-							<td><nobr><b>Telefone:</b> (88) 3565-0108</nobr></td>
+							<td><b>Cep:</b> ############</td>
+							<td><nobr><b>Telefone:</b> {{temp[0].telefone}}}</nobr></td>
 						</tr>
 						<tr>
-							<td><b>E-mail:</b> paulo.araujo@hotmail.com.br</td>
-							<td><b>Fax:</b> (88) 565-0755</td>
+							<td><b>E-mail:</b> {{temp[0].email}}</td>
+							<td><b>Fax:</b> {{temp[0].fax}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -82,12 +83,12 @@
 		</div></div></div>	
 	</div>
 
-	<!-- map -->
+	<!-- google map -->
 	<div class="row">
 		<div class="col-md-12">
 			<iframe style="height:50%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Governador Archer - MA, Brasil&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;}</style></div>		   
 		</div>
-	</div>  			
+	</div> 
 </div>
 </div>
 
@@ -96,6 +97,5 @@
 <link rel="stylesheet" href="css/style.css">
 <!-- <script src="js/bootstrap.min.js"></script> -->
 <script src="js/jquery.js"></script>
-
 </body>
 </html>

@@ -1,2 +1,40 @@
-[{"cidade_id":216,"email":"vbbbbbb@mppioosok.com","endereco_id":null,"fax":"(99)99999-9999","id":5,"membro":"Joaooooooooo","nome":"1 PROMOTORIA","telefone":"(81)18181-8188","tipo_id":2}, {"cidade_id":1,"email":"jkkkkkkk@mppioosok.com","endereco_id":null,"fax":"(99)99999-9999","id":2,"membro":"Albertoooo","nome":"2 PROMOTORIA","telefone":"(81)18181-8188","tipo_id":2},
-{"cidade_id":216,"email":"danielzao@mppioosok.com","endereco_id":null,"fax":"(99)99999-9999","id":8,"membro":"Igaooooo","nome":"10 PROMOTORIA","telefone":"(81)18181-8188","tipo_id":2}, {"cidade_id":1,"email":"yyyyyy@mppioosok.com","endereco_id":null,"fax":"(99)99999-9999","id":3,"membro":"Fabioooo","nome":"2 PROMOTORIA","telefone":"(81)18181-8188","tipo_id":2}]
+[{
+    "cidade_id": 216,
+    "email": "danielzao@mppioosok.com",
+    "endereco": {
+        "bairro": "Centro",
+        "cep": "65770-000",
+        "cidade_id": 216,
+        "complementoEndereco": "Um complemento Qualquer",
+        "id": 1,
+        "nome": "OKSOKWOKWOK",
+        "numero": "2385",
+        "rua": "Vereador Luis Vasconcelos"
+    },
+    "fax": "(99)99999-9999",
+    "id": 1,
+    "membro": "Manuel",
+    "nome": "1 PROMOTORIA",
+    "telefone": "(81)18181-8188",
+    "tipo_id": 2
+},
+{
+    "cidade_id": 216,
+    "email": "soskosksokssoks@mppioosok.com",
+    "endereco": {
+        "bairro": "Acular",
+        "cep": "111111-1010",
+        "cidade_id": 216,
+        "complementoEndereco": "Um complemento Qualquer",
+        "id": 2,
+        "nome": "sssssss",
+        "numero": "1223",
+        "rua": "Vereador Luis Vasconcelos"
+    },
+    "fax": "(99)99999-9999",
+    "id": 10,
+    "membro": "SOKSOKSOSK",
+    "nome": "10 PROMOTORIA",
+    "telefone": "(81)18181-11111",
+    "tipo_id": 2
+}]

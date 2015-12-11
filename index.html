@@ -24,11 +24,6 @@
 <div class="col-md-9">
 	<form>
 		<div class="form-group">
-			<label>Entrância</label>
-			<input disabled="disabled" type="text" class="form-control">
-		</div>
-
-		<div class="form-group">
 			<label>Cidade</label>
 			<select class="form-control" data-ng-model="data.id" data-ng-change="getUnidade()">
 			      <option ng-repeat="x in cidade" value="{{x.id}}">{{x.nome}}</option>
@@ -46,7 +41,7 @@
 
 <!-- details about unit -->
 
-<div class="col-md-12" ng-show="temp.length">
+<div class="col-md-12" ng-show="temp.length" style="margin-top:20px;">
 	<div class="panel panel-default">
 		<div class="panel-heading"><b>INFORMAÇÕES</b></div>	
 		<div class="panel-body">	   	
@@ -55,7 +50,7 @@
 					<tbody>
 						<tr>
 							<td width="273" style="border-top:none;"><b>{{temp[0].nome}}</b></td>
-							<td width="179" style="border-top:none;"><b>XXXXXXXXX</b></td>
+							<td width="179" style="border-top:none;"><b>Número:</b> {{temp[0].endereco.numero}}</td>
 						</tr>
 						<tr>
 							<td width="273"><b>Membro:</b> {{temp[0].membro}}</td>
@@ -63,19 +58,23 @@
 						</tr>
 						<tr>
 							<td><b>Endereço:</b> ##########</td>
-							<td><b>Bairro:</b> ############</td>
+							<td><b>Bairro:</b> {{temp[0].endereco.bairro}} </td>
 						</tr>
 						<tr>
 							<td><b>Cidade:</b> ###########</td>
-							<td><b>Estado:</b> ##########</td>
+							<td><b>Estado:</b> {{temp[0].endereco.estado}}</td>
 						</tr>
 						<tr>
-							<td><b>Cep:</b> ############</td>
+							<td><b>CEP:</b> {{temp[0].endereco.cep}}</td>
 							<td><nobr><b>Telefone:</b> {{temp[0].telefone}}}</nobr></td>
 						</tr>
 						<tr>
 							<td><b>E-mail:</b> {{temp[0].email}}</td>
 							<td><b>Fax:</b> {{temp[0].fax}}</td>
+						</tr>
+						<tr>
+							<td><b>Complemento: </b>{{temp[0].endereco.complementoEndereco}}</td>
+							<td></td>
 						</tr>
 					</tbody>
 				</table>
@@ -83,12 +82,12 @@
 		</div></div></div>	
 	</div>
 
-	<!-- google map -->
+	<!-- google map 
 	<div class="row">
 		<div class="col-md-12">
 			<iframe style="height:50%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Governador Archer - MA, Brasil&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;}</style></div>		   
 		</div>
-	</div> 
+	</div> -->
 </div>
 </div>
 

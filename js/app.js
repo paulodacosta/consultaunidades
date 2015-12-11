@@ -7,7 +7,7 @@ app.controller('myCtrl', function($scope, $http) {
 	$scope.temp = [];
 	$scope.tempKey;
 
-  	$http.get("all.json")
+  	$http.get("http://localhost:8080/jrws/rest/cidade/all")
     	.then(function (response) {
          $scope.cidade = response.data;
     });
@@ -18,7 +18,7 @@ app.controller('myCtrl', function($scope, $http) {
    		$scope.temp = [];   		
    		var key = this.data.id;
 
-	    $http.get("unidade.json")
+	    $http.get("http://localhost:8080/jrws/rest/unidade/all")
 	    	.then(function (response){
 	    		for (var i = 0; i < response.data.length; i++) {
 	    			if(response.data[i].cidade_id == key){
@@ -26,10 +26,11 @@ app.controller('myCtrl', function($scope, $http) {
 	    			}
 	    		}
 	    });
+
+
    	};
 
    	$scope.getDetails = function(){
-
    		$scope.temp = [];
 
    		for (var i = 0; i < $scope.unidade.length; i++){
@@ -37,7 +38,6 @@ app.controller('myCtrl', function($scope, $http) {
 	    		$scope.temp.push($scope.unidade[i]);
 	    	}
 	   	}
-
    	};
 
 });

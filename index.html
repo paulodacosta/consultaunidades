@@ -1,27 +1,28 @@
 <html ng-app="myApp">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consulta Entidades</title>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
  <script src="js/angular.min.js"></script>
+<script src="js/ng-map.js"></script> 
  <script src="js/app.js"></script>
-
 </head>
 <body ng-controller="myCtrl as ctrl">
-<div class="container" style="margin-top:40px;">
+<div class="container-fluid" style="margin-top:40px;">
 <div class="row">
-<div class="col-md-12">
-
-<div class="panel panel-default">
+<div class="panel panel-default" style="margin:10px;">
 <div class="panel-heading">
-<h4><span class="glyphicon glyphicon-search"></span>&nbsp;CONSULTA ENDEREÇO UNIDADE MINISTERIAL</h4>
+<h5><span class="glyphicon glyphicon-search"></span>&nbsp;CONSULTAR UNIDADES MINISTERIAIS</h5>
 </div>
 <div class="panel-body">
-<div class="col-md-3">
-	<a href="http://www.mppi.mp.br" target="_blank"><img width="223px" alt="logo mppi" title="Logo MPPI" height="200px" src="images/logo.jpg"></a>
+<div class="col-sm-1 visible-md-block visible-lg-block">
+	<a href="http://www.mppi.mp.br" target="_blank"><img width="100px" alt="logo mppi" title="Logo MPPI"  src="images/logo.jpg"></a>
 </div>
 
 <!-- filtros -->
-<div class="col-md-9">
+<div class="col-sm-5">
 	<form>
 		<div class="form-group">
 			<label>Cidade</label>
@@ -30,28 +31,37 @@
 			</select>       		
 		</div>
 
+	     	
+</div>
+
+<div class="col-sm-6">
 		<div class="form-group">
 			<label>Unidade Ministerial</label>
 			<select class="form-control" ng-model="tempKey" ng-change="getDetails()">
 				<option ng-repeat="y in unidade | orderBy: 'nome'" value="{{y.id}}">{{y.nome}} de {{y.endereco.cidade.nome}}</option>				
 			</select> 
 		</div>
-	</form>	         	
+	</form>      	
 </div>
 
-<!-- detalhes sobre a UNIDADE -->
+</div>   
+</div>
+</div> 
+</div>
+</div>
+    <ng-map zoom="17" class="map-responsive" center="{{url}}">
+      <marker id="foo" centered="true" position="{{url}}" draggable="true" on-dragend="vm.doSth()" on-click="map.showInfoWindow(event, 'bar')">
+         <!-- for show info window when map is loaded use: on-click="map.showInfoWindow(event, 'bar')" -->
+      </marker>  
 
-<div class="col-md-12" ng-show="temp.length" style="margin-top:20px;">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<b>INFORMAÇÕES</b>
-		</div>	
-		<div class="panel-body">	   	
-			<div class="form-group">
-				<table class="table" border="0" cellpadding="2" cellspacing="2" width="100%">
+      <info-window id="bar" center="{{url}}">
+        <div ng-non-bindable>
+          <div id="siteNotice"></div>
+          <h1 id="firstHeading" class="firstHeading">{{temp[0].nome}}</h1>
+          <div id="bodyContent">
+				<table class="table" border="0" cellpadding="1" cellspacing="2" width="100%">
 					<tbody>
 						<tr>
-							<td width="273" style="border-top:none;"><b>{{temp[0].nome}} de {{temp[0].endereco.cidade.nome}}</b></td>
 							<td width="179" style="border-top:none;"><b>Número:</b> {{temp[0].endereco.numero}}</td>
 						</tr>
 						<tr>
@@ -59,7 +69,7 @@
 							<td width="179"><b>Tipo:</b> {{temp[0].tipo.nome}}</td>
 						</tr>
 						<tr>
-							<td><b>Rua:</b> {{temp[0].endereco.rua}}</td>
+							<td><b>Logradouro:</b> {{temp[0].endereco.rua}}</td>
 							<td><b>Bairro:</b> {{temp[0].endereco.bairro}} </td>
 						</tr>
 						<tr>
@@ -75,31 +85,20 @@
 							<td><b>Fax:</b> {{temp[0].fax}}</td>
 						</tr>
 						<tr>
-							<td><b>Complemento: </b>{{temp[0].endereco.complementoEndereco}}</td>
-							<td></td>
+							<td colspan="2"><b>Complemento: </b>{{temp[0].endereco.complementoEndereco}}</td>
 						</tr>
 					</tbody>
 				</table>
-			<div class="row">
-				<div class="col-md-12">
-					<iframe style="height:50%;width:100%;border:0;" frameborder="0" ng-src="{{url}}"></iframe>
-				</div>
-				<style>#my-map-display img{max-width:none!important;background:none!important;font-size: inherit;}</style>
-			</div>
-		</div>				
-		</div>
-	</div>
-</div>	
-</div>   
-</div>
-</div> 
-</div>
-</div>
+          </div>
+        </div>
+      </info-window>
+    </ng-map> 
 
 <!-- external resources -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <!-- <script src="js/bootstrap.min.js"></script> -->
 <script src="js/jquery.js"></script>
+
 </body>
 </html>
